@@ -1,5 +1,6 @@
 import React from "react";
 import { AnimatedTabs, Tab } from "./ui/animated-tabs";
+import { IconPlus } from "@tabler/icons-react";
 
 interface CourseCardProps {
   title: string;
@@ -19,32 +20,36 @@ function CourseCard({
   icon,
 }: CourseCardProps) {
   return (
-    <div className="rounded-3xl shadow-sm ring ring-border p-6 border-[8px] border-border/50 flex flex-col justify-between">
+    <div className="rounded-3xl shadow-sm ring ring-border p-6 border-[8px] border-border/50 flex flex-col justify-between hover:shadow-lg hover:bg-secondary/50 transition-all duration-300 cursor-pointer group">
       <div>
-        <h3 className="text-xl font-bold mb-2">{title}</h3>
+        <h3 className="text-xl font-bold mb-2 group-hover:text-orange-500 transition-colors duration-300">
+          {title}
+        </h3>
         <div className="space-y-2 text-sm">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 bg-white rounded-full"></span>
+            <IconPlus className="w-4 h-4 text-orange-500 group-hover:rotate-90 transition-transform duration-300" />
             <span>{topics}</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 bg-white rounded-full"></span>
+            <IconPlus className="w-4 h-4 text-orange-500 group-hover:rotate-90 transition-transform duration-300" />
             <span>{contests}</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 bg-white rounded-full"></span>
+            <IconPlus className="w-4 h-4 text-orange-500 group-hover:rotate-90 transition-transform duration-300" />
             <span>{problems}</span>
           </div>
         </div>
       </div>
 
       <div className="flex flex-col items-center justify-center my-6">
-        <div className="text-6xl mb-4">{icon}</div>
+        <div className="text-6xl mb-4 group-hover:scale-110 transition-transform duration-300">
+          {icon}
+        </div>
       </div>
 
       <div className="mt-auto">
         <p className="text-sm text-muted-foreground mb-4">{description}</p>
-        <button className="w-full bg-neutral-800 hover:bg-neutral-700 text-white py-2 px-4 rounded-lg transition-colors">
+        <button className="w-full bg-neutral-800 hover:bg-orange-500 text-white py-2 px-4 rounded-lg transition-all duration-300 group-hover:bg-orange-500 group-hover:shadow-md">
           View Syllabus
         </button>
       </div>
@@ -58,7 +63,7 @@ export function TabsSection() {
       id: "dsa",
       label: "DSA",
       content: (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1</div> md:grid-cols-2 lg:grid-cols-3 gap-6">
           <CourseCard
             title="DSA"
             description="Designed for beginners as well as experts to prepare DSA"

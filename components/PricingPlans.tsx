@@ -3,6 +3,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import {
+  IconCalendar,
+  IconCalendarFilled,
+  IconCheck,
+  IconX,
+} from "@tabler/icons-react";
 
 interface PricingPlan {
   id: string;
@@ -112,134 +118,99 @@ export function PricingPlans() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               className={cn(
-                "relative rounded-2xl p-8 border transition-all duration-300 hover:scale-105",
-                plan.isPopular ? "border-orange-500 shadow-2xl" : ""
+                "relative rounded-2xl flex flex-col justify-between p-8 border transition-all duration-300 hover:scale-105",
+                plan.isPopular ? "border-orange-500/80 shadow-2xl scale-105" : ""
               )}
             >
-              {plan.badge && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, delay: index * 0.2 + 0.3 }}
-                  className="absolute -top-4 left-1/2 transform -translate-x-1/2"
-                >
-                  <div className="bg-orange-500 px-4 py-2 rounded-full text-sm font-medium">
-                    {plan.badge}
-                  </div>
-                </motion.div>
-              )}
-
-              <div className="mb-8">
-                <h3 className="text-2xl font-semibold mb-2 flex items-center gap-2">
-                  {plan.name}
-                </h3>
-                <p className={"text-sm text-muted-foreground"}>
-                  {plan.subtitle}
-                </p>
-              </div>
-
-              {plan.regularPrice > 0 && (
-                <div className="mb-8">
-                  <div className="flex items-center gap-4 mb-2">
-                    <span
-                      className={cn(
-                        "text-lg line-through text-muted-foreground"
-                      )}
-                    >
-                      Original: ₹{plan.originalPrice}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-4 mb-4">
-                    <span className={cn("text-lg")}>
-                      Regular: ₹{plan.regularPrice}
-                    </span>
-                    <span className="bg-green-600 px-2 py-1 rounded text-sm font-medium">
-                      {plan.discountPercentage}% OFF
-                    </span>
-                  </div>
-                </div>
-              )}
-
-              {/* Validity */}
-              {plan.validity && (
-                <div className="mb-6 flex items-center gap-2">
-                  <svg
-                    className="w-5 h-5 text-muted-foreground"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+              <div>
+                {plan.badge && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4, delay: index * 0.2 + 0.3 }}
+                    className="absolute -top-4 left-1/2 transform -translate-x-1/2"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                    />
-                  </svg>
-                  <span className={cn("text-sm")}>
-                    Validity: {plan.validity}
-                  </span>
-                </div>
-              )}
+                    <div className="bg-orange-500 font-jost px-4 py-2 rounded-full text-sm font-medium">
+                      {plan.badge}
+                    </div>
+                  </motion.div>
+                )}
 
-              {/* Features */}
-              <div className="mb-8">
-                <h4 className={cn("font-semibold mb-4")}>What's included</h4>
-                <ul className="space-y-3">
-                  {plan.features.map((feature, featureIndex) => (
-                    <motion.li
-                      key={featureIndex}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{
-                        duration: 0.4,
-                        delay: index * 0.2 + featureIndex * 0.1,
-                      }}
-                      className="flex items-center gap-3"
-                    >
-                      <div
+                <div className="mb-8">
+                  <h3 className="text-2xl font-jost font-semibold mb-2 flex items-center gap-2">
+                    {plan.name}
+                  </h3>
+                  <p className={"text-sm text-muted-foreground"}>
+                    {plan.subtitle}
+                  </p>
+                </div>
+
+                {plan.regularPrice > 0 && (
+                  <div className="mb-8">
+                    <div className="flex items-center gap-4 mb-2">
+                      <span
                         className={cn(
-                          "w-5 h-5 rounded-full flex items-center justify-center",
-                          feature.included ? "bg-green-500" : "bg-red-500"
+                          "text-lg line-through text-muted-foreground"
                         )}
                       >
-                        {feature.included ? (
-                          <svg
-                            className="w-3 h-3"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M5 13l4 4L19 7"
-                            />
-                          </svg>
-                        ) : (
-                          <svg
-                            className="w-3 h-3 text-white"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M6 18L18 6M6 6l12 12"
-                            />
-                          </svg>
-                        )}
-                      </div>
-                      <span className={cn("text-sm")}>{feature.text}</span>
-                    </motion.li>
-                  ))}
-                </ul>
+                        Original: ₹{plan.originalPrice}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-4 mb-4">
+                      <span className={cn("text-lg")}>
+                        Regular: ₹{plan.regularPrice}
+                      </span>
+                      <span className="bg-emerald-600 px-2 py-1 rounded text-sm font-medium">
+                        {plan.discountPercentage}% OFF
+                      </span>
+                    </div>
+                  </div>
+                )}
+
+                {plan.validity && (
+                  <div className="mb-6 flex items-center gap-2">
+                    <IconCalendarFilled className="w-5 h-5 text-muted-foreground" />
+                    <span className={cn("text-sm")}>
+                      Validity: {plan.validity}
+                    </span>
+                  </div>
+                )}
+
+                <div className="mb-8">
+                  <h4 className={cn("font-semibold mb-4")}>What's included</h4>
+                  <ul className="space-y-2">
+                    {plan.features.map((feature, featureIndex) => (
+                      <motion.li
+                        key={featureIndex}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{
+                          duration: 0.4,
+                          delay: index * 0.2 + featureIndex * 0.1,
+                        }}
+                        className="flex items-center gap-3"
+                      >
+                        <div
+                          className={cn(
+                            "w-5 h-5 rounded-full flex items-center justify-center",
+                            feature.included
+                              ? "bg-emerald-500"
+                              : "bg-neutral-500"
+                          )}
+                        >
+                          {feature.included ? (
+                            <IconCheck className="w-3 h-3 text-white" />
+                          ) : (
+                            <IconX className="w-3 h-3 text-white" />
+                          )}
+                        </div>
+                        <span className={cn("text-sm")}>{feature.text}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
               </div>
 
-              {/* Button */}
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
