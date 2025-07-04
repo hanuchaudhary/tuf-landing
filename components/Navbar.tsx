@@ -16,10 +16,10 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
   const [timeLeft, setTimeLeft] = React.useState({
-    days: 1,
-    hours: 0,
-    minutes: 42,
-    seconds: 19
+    days: 0,
+    hours: 19,
+    minutes: 39,
+    seconds: 0
   });
 
   React.useEffect(() => {
