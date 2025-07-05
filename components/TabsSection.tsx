@@ -190,7 +190,7 @@ function CourseCard({
   return (
     <>
       <div className="rounded-3xl shadow-sm ring ring-border p-6 border-[8px] border-border/50 flex flex-col justify-between hover:shadow-lg hover:scale-105 hover:bg-secondary/50 transition-all duration-300 cursor-pointer group">
-        <div>
+        <div className="">
           <h3 className="text-xl font-bold mb-2 group-hover:text-orange-500 transition-colors duration-300">
             {title}
           </h3>

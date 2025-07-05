@@ -146,8 +146,8 @@ export function VideoSection() {
                 </h3>
               </div>
 
-              <div className="relative rounded-xl overflow-hidden">
-                <div className="relative z-10 p-4 border-4 rounded-3xl overflow-hidden">
+              <div className="relative rounded-3xl overflow-hidden ring-2 ring-secondary">
+                <div className="relative z-10 p-4 border-[8px] rounded-3xl overflow-hidden">
                   <video
                     src={currentTab.videoUrl}
                     title={currentTab.title}
@@ -195,7 +195,6 @@ export function VideoSection() {
                   playsInline
                 />
                 
-                {/* Close button */}
                 <button
                   onClick={() => setIsVideoModalOpen(false)}
                   className="absolute top-4 right-4 w-10 h-10 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70 transition-colors"
@@ -215,7 +214,6 @@ export function VideoSection() {
                   </svg>
                 </button>
 
-                {/* Video Title */}
                 <div className="absolute bottom-4 left-4 right-4">
                   <h3 className="text-white text-lg font-semibold mb-2">
                     {modalVideo.title}

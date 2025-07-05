@@ -103,7 +103,7 @@ export function PricingPlans() {
         >
           <h2 className="md:text-3xl md:text-left text-xl text-center">
             Affordable Plans for{" "}
-            <span className="text-orange-500"> Everyone</span>
+            <span className="text-orange-400"> Everyone</span>
           </h2>
           <p className="mb-4 text-muted-foreground">
             Choose the best fit for you
@@ -118,8 +118,8 @@ export function PricingPlans() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               className={cn(
-                "relative rounded-2xl flex flex-col justify-between p-8 border transition-all duration-300 hover:scale-105",
-                plan.isPopular ? "border-orange-500/80 shadow-2xl scale-105" : ""
+                "relative rounded-3xl flex flex-col justify-between p-8 border-4 transition-all duration-300 hover:scale-105",
+                plan.isPopular ? "border-orange-200/80 shadow-2xl md:scale-105" : ""
               )}
             >
               <div>
