@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { StickyBanner } from "./StickyBanner";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
+import { GradientButton } from "./ui/GradientButton";
 
 export function Navbar() {
   const [active, setActive] = React.useState<string | null>(null);
@@ -97,8 +98,8 @@ export function Navbar() {
         }}
         onMouseLeave={() => setActive(null)}
       >
-        <div className="flex items-center gap-2 dark:bg-transparent bg-black py-2 md:py-4 px-1 md:px-2 rounded-md">
-          <img src="/logo.png" alt="TUF Logo" className="w-10 md:w-14 object-contain" />
+        <div className="flex items-center gap-2 py-2 md:py-4 px-1 md:px-2 rounded-md">
+          <img src="/logo.png" alt="TUF Logo" className="w-10 md:w-14 object-contain dark:invert-0 invert-[1]" />
         </div>
 
         {/* Desktop Navigation Items */}
@@ -180,9 +181,7 @@ export function Navbar() {
           <ThemeSwitcher />
 
           <div className="flex items-center gap-2">
-            <Button variant="orange" size="sm">
-              Login
-            </Button>
+            <GradientButton variant="orange" text="Login" size="sm" />
           </div>
         </div>
 

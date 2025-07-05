@@ -1,9 +1,10 @@
 "use client";
 
-import { IconAi, IconSettingsBolt } from "@tabler/icons-react";
+import { IconAi, IconCheck, IconSettingsBolt } from "@tabler/icons-react";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { GradientButton } from "./ui/GradientButton";
 
 interface ComparisonFeature {
   id: string;
@@ -73,58 +74,44 @@ const comparisonFeatures: ComparisonFeature[] = [
   {
     id: "dsa-basics",
     name: "DSA (Basics to Advanced)",
-    tufFree: "Yes (Curated list of beginners with practice set)",
-    tufPremium: "Yes",
-    otherPlatforms: "Yes",
+    tufFree: "✓",
+    tufPremium: "Curated list of beginners with practice set",
+    otherPlatforms: "✓",
   },
   {
     id: "live-content",
     name: "Live Content",
-    tufFree: "No (Too crowded and chaotic)",
-    tufPremium: "Yes",
-    otherPlatforms: "Yes",
+    tufFree: "✓",
+    tufPremium: "Too crowded and chaotic",
+    otherPlatforms: "—",
   },
   {
     id: "recorded-content",
     name: "Recorded Content",
-    tufFree: "Yes (Broken down to smaller parts to save time)",
-    tufPremium: "Yes",
-    otherPlatforms: "Yes",
+    tufFree: "✓",
+    tufPremium: "Broken down to smaller parts to save time",
+    otherPlatforms: "✓",
   },
   {
     id: "dsa-pattern",
     name: "DSA (Pattern Wise)",
-    tufFree: "Yes",
-    tufPremium: "No",
-    otherPlatforms: "No",
+    tufFree: "✓",
+    tufPremium: "",
+    otherPlatforms: "—",
   },
   {
     id: "practice-problems",
     name: "1000+ Practice Problems",
-    tufFree: "Yes",
-    tufPremium: "No (Apart from very few)",
-    otherPlatforms: "No",
+    tufFree: "✓",
+    tufPremium: "Apart from very few",
+    otherPlatforms: "—",
   },
   {
     id: "customised-roadmap",
     name: "Customised Roadmap",
-    tufFree: "Yes",
-    tufPremium: "No",
-    otherPlatforms: "No",
-  },
-  {
-    id: "course-platform",
-    name: "Course + Platform",
-    tufFree: "Yes",
-    tufPremium: "No (Apart from few dead ones)",
-    otherPlatforms: "No",
-  },
-  {
-    id: "notes-downloader",
-    name: "Notes Downloader to Google Docs",
-    tufFree: "Yes",
-    tufPremium: "No",
-    otherPlatforms: "No",
+    tufFree: "✓",
+    tufPremium: "",
+    otherPlatforms: "—",
   },
 ];
 
@@ -168,10 +155,12 @@ export function CompareSection() {
                 <div className="text-">
                   <div className="text-2xl font-semibold">TUF</div>
                 </div>
-                <div className="text-">
-                  <div className="text-2xl font-semibold">
-                    TUF <span className="text-orange-500">+</span>
-                  </div>
+                <div className="flex items-center justify-center gap-2">
+                  <img
+                    src="/logo.png"
+                    alt="TUF Logo"
+                    className="w-10 h-10 object-contain dark:invert-0 invert-[1]"
+                  />
                 </div>
               </div>
               <div className="divide-y">
@@ -181,7 +170,7 @@ export function CompareSection() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.4, delay: index * 0.1 }}
-                    className="grid grid-cols-3 gap-4 p-6 hover:bg-gray-750 transition-colors"
+                    className="grid grid-cols-3 gap-4 p-6 hover:bg-neutral-750 transition-colors"
                   >
                     <div className="font-medium">{feature.name}</div>
                     <div className="text-sm text-muted-foreground leading-relaxed">
@@ -197,14 +186,16 @@ export function CompareSection() {
           ) : (
             <div>
               <div className="grid grid-cols-3 gap-4 p-6 bg-secondary border-b">
-                <div className="font-semibold">Features</div>
+                <div className="font-semibold text-lg">Features</div>
                 <div className="text-center">
-                  <div className="text-xl">
-                    TUF<span className="text-orange-500">+</span>
-                  </div>
+                  <div className="text-lg font-semibold">Other Platforms</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-xl">Other Platforms</div>
+                <div className="flex items-center justify-center gap-2">
+                  <img
+                    src="/logo.png"
+                    alt="TUF Logo"
+                    className="w-10 h-10 object-contain dark:invert-0 invert-[1]"
+                  />
                 </div>
               </div>
 
@@ -215,36 +206,39 @@ export function CompareSection() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.4, delay: index * 0.1 }}
-                    className="grid grid-cols-3 gap-4 p-6 hover:bg-gray-750 transition-colors"
+                    className="grid grid-cols-3 gap-4 p-6 hover:bg-neutral-800/20 transition-colors"
                   >
                     <div className="font-medium">{feature.name}</div>
-                    <div className="text-center font-jost">
-                      <span
-                        className={cn(
-                          "px-3 py-1 rounded-full text-sm font-medium",
-                          feature.tufPremium === "Yes"
-                            ? "bg-green-500/20 border border-green-600 text-green-500"
-                            : feature.tufPremium === "No"
-                            ? "bg-red-600/20 border border-red-600 text-red-500"
-                            : "bg-secondary/20 border border-secondary text-muted-foreground"
-                        )}
-                      >
-                        {feature.tufPremium}
-                      </span>
+                    <div className="text-center">
+                      {feature.otherPlatforms === "✓" ? (
+                        <div className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-orange-500">
+                          <span className="text-sm text-white font-bold">
+                            <IconCheck className="h-3 w-3" />
+                          </span>
+                        </div>
+                      ) : (
+                        <span className="text-muted-foreground text-xl font-bold">
+                          —
+                        </span>
+                      )}
                     </div>
-                    <div className="text-center font-jost">
-                      <span
-                        className={cn(
-                          "px-3 py-1 rounded-full text-sm font-medium",
-                          feature.otherPlatforms === "Yes"
-                            ? "bg-green-500/20 border border-green-600 text-green-500"
-                            : feature.otherPlatforms === "No"
-                            ? "bg-red-600/20 border border-red-600 text-red-500"
-                            : "bg-secondary/20 border border-secondary text-muted-foreground"
-                        )}
-                      >
-                        {feature.otherPlatforms}
-                      </span>
+                    <div className="flex items-center gap-3">
+                      {feature.tufFree === "✓" ? (
+                        <div className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-orange-500 flex-shrink-0">
+                          <span className="text-white text-sm font-bold">
+                            <IconCheck className="h-3 w-3" />
+                          </span>
+                        </div>
+                      ) : (
+                        <span className="text-muted-foreground text-xl font-bold flex-shrink-0">
+                          —
+                        </span>
+                      )}
+                      {feature.tufPremium && (
+                        <span className="text-sm text-muted-foreground">
+                          {feature.tufPremium}
+                        </span>
+                      )}
                     </div>
                   </motion.div>
                 ))}
@@ -252,31 +246,9 @@ export function CompareSection() {
             </div>
           )}
         </motion.div>
-
-        {/* Show All Features Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-8"
-        >
-          <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2 mx-auto">
-            Show All Features
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </button>
-        </motion.div>
+        <div className="flex justify-center">
+          <GradientButton className="mt-8" text="Show All Features" />
+        </div>
       </div>
     </div>
   );

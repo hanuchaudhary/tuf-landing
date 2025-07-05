@@ -43,7 +43,7 @@ const AnimatedTabs = ({ tabs = [], className }: AnimatedTabsProps) => {
               )}
               <span className="relative z-10">{tab.label}</span>
               {tab.isNew && (
-                <span className="relative z-10 bg-orange-500 text-white text-xs px-2 py-0.5 rounded-full">
+                <span className="relative z-10 bg-gradient-to-r from-orange-500 to-orange-400 text-white text-xs px-2 py-0.5 rounded-full">
                   New
                 </span>
               )}

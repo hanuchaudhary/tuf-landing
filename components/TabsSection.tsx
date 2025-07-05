@@ -222,7 +222,7 @@ function CourseCard({
           <p className="text-sm text-muted-foreground mb-4">{description}</p>
           <button
             onClick={() => setIsDialogOpen(true)}
-            className="w-full bg-neutral-800 hover:bg-orange-500 text-white py-2 px-4 rounded-lg transition-all duration-300 group-hover:bg-orange-500 group-hover:shadow-md"
+            className="w-full bg-neutral-800 hover:bg-gradient-to-r from-orange-500 to-orange-400 text-white py-2 px-4 rounded-lg transition-all duration-300 group-hover:bg-gradient-to-r from-orange-500 to-orange-400 group-hover:shadow-md"
           >
             View Syllabus
           </button>

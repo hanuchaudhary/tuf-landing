@@ -324,7 +324,7 @@ export function FaqSection() {
                     className={cn(
                       "w-full text-left px-4 py-3 rounded-lg transition-all duration-300 flex items-center justify-between group",
                       activeCategory === category.id
-                        ? "bg-orange-500"
+                        ? "bg-gradient-to-r from-orange-500 to-orange-400"
                         : "text-muted-foreground hover:text-white"
                     )}
                   >
@@ -366,7 +366,7 @@ export function FaqSection() {
                     className={cn(
                       "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap",
                       activeCategory === category.id
-                        ? "bg-orange-500 text-white"
+                        ? "bg-gradient-to-r from-orange-500 to-orange-400 text-white"
                         : "bg-secondary text-muted-foreground hover:bg-secondary/80"
                     )}
                   >
@@ -482,7 +482,7 @@ export function FaqSection() {
                 </p>
               </div>
             </div>
-            <button className="bg-orange-500 hover:bg-orange-600 px-6 py-3 rounded-lg font-medium transition-colors md:mt-0 mt-4">
+            <button className="bg-gradient-to-r from-orange-500 to-orange-400 hover:bg-orange-600 px-6 py-3 rounded-lg font-medium transition-colors md:mt-0 mt-4">
               Ask Your Query
             </button>
           </div>

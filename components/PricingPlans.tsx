@@ -9,6 +9,7 @@ import {
   IconCheck,
   IconX,
 } from "@tabler/icons-react";
+import { GradientButton } from "./ui/GradientButton";
 
 interface PricingPlan {
   id: string;
@@ -118,8 +119,10 @@ export function PricingPlans() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               className={cn(
-                "relative rounded-3xl flex flex-col justify-between p-8 border-4 transition-all duration-300 hover:scale-105",
-                plan.isPopular ? "border-orange-200/80 shadow-2xl md:scale-105" : ""
+                "relative rounded-3xl bg-secondary/30 flex flex-col justify-between p-8 border-4 transition-all duration-300 hover:scale-105",
+                plan.isPopular
+                  ? "border-orange-200/80 shadow-2xl md:scale-105"
+                  : ""
               )}
             >
               <div>
@@ -130,7 +133,7 @@ export function PricingPlans() {
                     transition={{ duration: 0.4, delay: index * 0.2 + 0.3 }}
                     className="absolute -top-4 left-1/2 transform -translate-x-1/2"
                   >
-                    <div className="bg-orange-500 font-jost px-4 py-2 rounded-full text-sm font-medium">
+                    <div className="bg-gradient-to-r from-orange-500 to-orange-400 font-jost px-4 py-2 rounded-full text-sm font-medium">
                       {plan.badge}
                     </div>
                   </motion.div>
@@ -160,7 +163,7 @@ export function PricingPlans() {
                       <span className={cn("text-lg")}>
                         Regular: ₹{plan.regularPrice}
                       </span>
-                      <span className="bg-emerald-600 px-2 py-1 rounded text-sm font-medium">
+                      <span className="bg-orange-500 px-2 py-1 rounded text-sm font-medium">
                         {plan.discountPercentage}% OFF
                       </span>
                     </div>
@@ -194,7 +197,7 @@ export function PricingPlans() {
                           className={cn(
                             "w-5 h-5 rounded-full flex items-center justify-center",
                             feature.included
-                              ? "bg-emerald-500"
+                              ? "bg-orange-500"
                               : "bg-neutral-500"
                           )}
                         >
@@ -211,21 +214,11 @@ export function PricingPlans() {
                 </div>
               </div>
 
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className={cn(
-                  "w-full py-4 px-6 rounded-xl font-semibold transition-all duration-300",
-                  plan.buttonVariant === "primary" &&
-                    "bg-orange-500 hover:bg-orange-600 text-white",
-                  plan.buttonVariant === "secondary" &&
-                    "bg-orange-500 hover:bg-orange-600 text-white",
-                  plan.buttonVariant === "outline" &&
-                    "border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white"
-                )}
-              >
-                {plan.buttonText}
-              </motion.button>
+              <GradientButton
+                text={plan.buttonText}
+                className="w-full py-4 px-6 font-semibold transition-all duration-300"
+                variant={plan.isPopular ? "orange" : "white"}
+              />
             </motion.div>
           ))}
         </div>

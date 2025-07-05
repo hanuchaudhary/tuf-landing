@@ -1,9 +1,7 @@
 import React from "react";
-import { Button } from "./ui/button";
-import { GradientBars } from "./ui/GradientBars";
-import { LiquidButton } from "./ui/liquid-glass-button";
 import { GradientBackground } from "./ui/NoiseGradient";
 import { ContainerScroll } from "./ui/container-scroll-animation";
+import { GradientButton } from "./ui/GradientButton";
 export default function HeroSection() {
   return (
     <div className="relative flex items-center justify-center min-h-screen overflow-hidden">
@@ -40,7 +38,7 @@ export default function HeroSection() {
             <div className="border inline-block backdrop-blur-md bg-secondary/30 font-jost shadow-sm rounded-full pl-4 py-2 pr-0.5 md:text-sm text-xs">
               <span>
                 Trusted by over{" "}
-                <span className="bg-gradient-to-r ml-2 font-semibold from-orange-600 to-orange-500 rounded-full p-1.5">
+                <span className="ml-2 font-semibold bg-gradient-to-r from-orange-500 to-orange-400 rounded-full p-1.5">
                   100,000+ engineers
                 </span>
               </span>
@@ -59,15 +57,16 @@ export default function HeroSection() {
               </p>
             </div>
             <div className="mt-10 flex space-x-4">
-              <LiquidButton className="rounded-full md:scale-100 scale-75">
-                Explore Offerings
-              </LiquidButton>
-              <Button
-                className="rounded-full md:h-14 md:px-6 text-primary border md:block hidden"
-                variant={"orange"}
-              >
-                Buy Now
-              </Button>
+              <GradientButton
+                text="Explore Offerings"
+                className="rounded-full md:h-10 md:px-6"
+                variant="white"
+              />
+              <GradientButton
+                text="Buy Now"
+                className="rounded-full md:h-10 md:px-6"
+                variant="orange"
+              />
             </div>
           </div>
         }
