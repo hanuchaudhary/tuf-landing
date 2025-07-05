@@ -36,8 +36,8 @@ export default function HeroSection() {
       </div> */}
       <ContainerScroll
         titleComponent={
-          <div className="relative z-20 flex flex-col items-center mb-20 pt-10">
-            <div className="border inline-block backdrop-blur-md bg-secondary/30 font-jost shadow-sm rounded-full pl-4 py-2 pr-0.5 text-sm">
+          <div className="relative z-20 flex flex-col items-center md:mb-20 md:pt-10 pt-40">
+            <div className="border inline-block backdrop-blur-md bg-secondary/30 font-jost shadow-sm rounded-full pl-4 py-2 pr-0.5 md:text-sm text-xs">
               <span>
                 Trusted by over{" "}
                 <span className="bg-gradient-to-r ml-2 font-semibold from-orange-600 to-orange-500 rounded-full p-1.5">
@@ -59,7 +59,7 @@ export default function HeroSection() {
               </p>
             </div>
             <div className="mt-10 flex space-x-4">
-              <LiquidButton className="rounded-full md:h-14 md:px-6">
+              <LiquidButton className="rounded-full md:scale-100 scale-75">
                 Explore Offerings
               </LiquidButton>
               <Button
